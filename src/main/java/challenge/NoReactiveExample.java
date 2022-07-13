@@ -40,7 +40,7 @@ public class NoReactiveExample {
                 .collect(Collectors.toList());
     }
 
-    public Integer totalDeAsisntenciasDeEstudiantesConMayorPuntajeDe(int valor) {
+    public Integer totalDeAsistenciasDeEstudiantesConMayorPuntajeDe(int valor) {
         return estudianteList.stream()
                 .filter(estudiante -> estudiante.getPuntaje() >= valor)
                 .flatMap(estudiante -> estudiante.getAsistencias().stream())
@@ -73,6 +73,14 @@ public class NoReactiveExample {
                 .collect(Collectors.toList());
     }
 
+    public List<String> estudiantesAprobados() {
+        return estudianteList.stream()
+                .map(this::aprobar)
+                .filter(Estudiante::isAprobado)
+                .map(Estudiante::getNombre)
+                .collect(Collectors.toList());
+    }
+
     private Estudiante aprobar(Estudiante estudiante) {
         return Optional.of(estudiante)
                 .filter(e -> e.getPuntaje() >= 75)
@@ -82,15 +90,4 @@ public class NoReactiveExample {
                     return est1;
                 }).orElseGet(() -> estudiante);
     }
-
-
-    public List<String> estudiantesAprovados(){
-        return estudianteList.stream()
-                .map(this::aprobar)
-                .filter(Estudiante::isAprobado)
-                .map(Estudiante::getNombre)
-                .collect(Collectors.toList());
-    }
-
-
 }
