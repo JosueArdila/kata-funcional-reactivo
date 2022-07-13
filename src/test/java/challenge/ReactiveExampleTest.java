@@ -19,7 +19,6 @@ class ReactiveExampleTest {
     @InjectMocks
     ReactiveExample reactiveExample;
 
-
     @Test
     void sumaDePuntajes() {
         //arrange
@@ -95,7 +94,6 @@ class ReactiveExampleTest {
                 .expectNext("pedro")//assert
                 .expectComplete()
                 .verify();
-
     }
 
     @Test
