@@ -5,9 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import challenge.Estudiante;
-import challenge.NoReactiveExample;
 
+import java.util.Arrays;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
@@ -38,13 +37,13 @@ class NoReactiveExampleTest {
     }
 
     @Test
-    void totalDeAsisntenciasDeEstudiantesComMayorPuntajeDe(){
+    void totalDeAsistenciasDeEstudiantesConMayorPuntajeDe(){
 
         //arrange
         //act
-        var valor = noReactiveExample.totalDeAsisntenciasDeEstudiantesConMayorPuntajeDe(75);
+        var valor = noReactiveExample.totalDeAsistenciasDeEstudiantesConMayorPuntajeDe(75);
         //assert
-        System.out.println(valor);
+        Assertions.assertEquals(43, valor);
     }
 
     @Test
@@ -70,11 +69,14 @@ class NoReactiveExampleTest {
     }
 
     @Test
-    void estudiantesAprovados(){
+    void estudiantesAprobados(){
         //arrange
+        List<String> estudiantesAprobados = Arrays.asList("juan", "pedro");
         //act
-        var valor = noReactiveExample.estudiantesAprovados();
+        var valor = noReactiveExample.estudiantesAprobados();
         //assert
-        System.out.println(valor);
+        Assertions.assertEquals(2, valor.size());
+        Assertions.assertEquals(estudiantesAprobados.get(0), valor.get(0));
+        Assertions.assertEquals(estudiantesAprobados.get(1), valor.get(1));
     }
 }
